@@ -162,7 +162,7 @@ class DatasetLoader:
             dataset_dict_id['test'] = Dataset.from_pandas(self.test_df_id)
         if self.val_df_id is not None:
             dataset_dict_id['validation'] = Dataset.from_pandas(self.val_df_id)
-        if len(dataset_dict_id) > 1:
+        if len(dataset_dict_id) > 0:
             indomain_dataset = DatasetDict(dataset_dict_id)
             indomain_tokenized_datasets = indomain_dataset.map(tokenize_function, batched=True)
         else:
@@ -175,7 +175,7 @@ class DatasetLoader:
             dataset_dict_ood['test'] = Dataset.from_pandas(self.test_df_ood)
         if self.val_df_ood is not None:
             dataset_dict_ood['validation'] = Dataset.from_pandas(self.val_df_ood)
-        if len(dataset_dict_id) > 1:
+        if len(dataset_dict_ood) > 0:
             other_domain_dataset = DatasetDict(dataset_dict_ood)
             other_domain_tokenized_dataset = other_domain_dataset.map(tokenize_function, batched=True)
         else:

@@ -10,3 +10,8 @@ introfigure.pptx
 create_data.ipynb
 InstructABSA Experiments.xlsx
 ORS
+# Local environment, backups and model checkpoints (too large for GitHub)
+.venv/
+*.bak
+Output/ate/
+*.safetensors

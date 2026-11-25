@@ -1,0 +1,31 @@
+{
+  "created": "2026-11-25T19:47:45+00:00",
+  "model": "qwen2.5:7b",
+  "seed": 2026,
+  "num_predict": 200,
+  "modelfile_parameters": null,
+  "model_details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen2",
+    "families": [
+      "qwen2"
+    ],
+    "parameter_size": "7.6B",
+    "quantization_level": "Q4_K_M"
+  },
+  "n_pairs_pool": 3593,
+  "k_values": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "k_weights": [
+    1023,
+    572,
+    269,
+    104
+  ],
+  "prompt_template": "You are a critic who can generate comments on the specified aspect and sentiment.\nWe would like you to complete a sentence generation task. Please follow these requirements:\n- You need to use the sentiment, the aspect mentioned in the prompt\n- Domain: Restaurants\n- Your response must include:\n1. The sentence.\n2. A line that starts with Terms= followed by the list of aspect terms used.\n3. A line that starts with Polarity= followed by the matching polarity list.\n- ALL aspect terms must appear as actual aspects in the sentence with intended polarities\n- Generated sentence must have the writing style and grammar structure and length of this sentence: {sent}\n- The sentence should not have aspect words not specified in the prompt\n- DO NOT repeat the input text in the output\n- PRINT ONLY THE ANSWER TEXT — no explaining, nothing else\n- Make sure to use aspect words in the output\nGood Examples:\nThe prices were too high for this type of restaurant\nTerms=['prices']\nPolarity=['negative']\n\nThe Gnocchi was perfectly cooked and delicious, but the cheesecake was dry and flavorless.\nTerms=['Gnocchi', 'cheesecake']\nPolarity=['positive', 'negative']\nBad Example:\nThe udon soup was rich and flavorful.\nTerms=['soup']\nPolarity=['positive']\n(term incorrect)\nMake sure your output exactly follows this format.\n\nAspect terms: {terms}\nPolarities: {polarities}"
+}

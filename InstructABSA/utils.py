@@ -30,6 +30,10 @@ class T5Generator:
         """
         Train the generative model.
         """
+        # No validation split -> no in-training evaluation (test set stays reserved for eval mode)
+        if tokenized_datasets.get("validation") is None:
+            kwargs['evaluation_strategy'] = 'no'
+
         #Set training arguments
         args = Seq2SeqTrainingArguments(
             **kwargs
@@ -152,6 +156,10 @@ class T5Classifier:
         """
         Train the generative model.
         """
+
+        # No validation split -> no in-training evaluation (test set stays reserved for eval mode)
+        if tokenized_datasets.get("validation") is None:
+            kwargs['evaluation_strategy'] = 'no'
 
         # Set training arguments
         args = Seq2SeqTrainingArguments(

@@ -114,7 +114,8 @@ if config.task == 'joint':
 
 if config.mode != 'cli':
     # Define function to load datasets and tokenize datasets
-    loader = DatasetLoader(id_tr_df, id_te_df, ood_tr_df, ood_te_df, config.sample_size)
+    loader = DatasetLoader(train_df_id=id_tr_df, test_df_id=id_te_df, train_df_ood=ood_tr_df,
+                           test_df_ood=ood_te_df, sample_size=config.sample_size)
     if config.task == 'ate':
         if loader.train_df_id is not None:
             loader.train_df_id = loader.create_data_in_ate_format(loader.train_df_id, 'term', 'raw_text', 'aspectTerms', bos_instruction_id, eos_instruction)
